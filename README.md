@@ -88,38 +88,6 @@ App behavior:
 
 Important: If models were trained on scaled data, ensure a saved `StandardScaler` or pipeline is loaded and used before prediction. The current `app.py` file loads `score.pkl` and `category.pkl` and `labelencoder.pkl` — add `scaler.pkl` (or load a saved Pipeline) to apply the same preprocessing.
 
-## Training & Reproducibility
-
-Typical training flow (notebook snippets):
-
-```python
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.svm import SVR, SVC
-import joblib
-
-# split
-x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# scale
-scaler = StandardScaler().fit(x_train)
-x_train_sc = scaler.transform(x_train)
-x_test_sc = scaler.transform(x_test)
-
-# train
-model = SVR()
-model.fit(x_train_sc, y_train)
-
-# save
-joblib.dump(model, 'score.pkl')
-joblib.dump(scaler, 'scaler.pkl')
-```
-
-Reproducibility checklist:
-- Save preprocessing artifacts (`StandardScaler`, label encoders) alongside models.
-- Pin dependency versions in `requirements.txt`.
-- Record model hyperparameters and random seeds.
-
 ## Repository Structure
 
 Top-level files:
@@ -151,5 +119,6 @@ Long-term:
 
 
 Project author: Devarsh S R
+
 
 
