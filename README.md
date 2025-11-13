@@ -114,11 +114,12 @@ Long-term:
 - If possible, collect and incorporate real-world labeled data for better generalization.
 - Add authentication and secure logging if the app will capture user inputs.
 
-## License & Contact
+## Contact
 
 
 
 Project author: Devarsh S R
+
 
 
 
